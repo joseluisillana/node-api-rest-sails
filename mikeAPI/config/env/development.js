@@ -23,5 +23,4 @@ module.exports = {
   models: {
     connection: 'mongoLocal'
   }
-
 };

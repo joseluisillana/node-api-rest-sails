@@ -1,5 +1,5 @@
 {
-  "name": "myProyect",
+  "name": "mikeAPI",
   "private": true,
   "version": "0.0.0",
   "description": "a Sails application",
@@ -32,7 +32,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/joseluisillana/myProyect.git"
+    "url": "git://github.com/joseluisillana/mikeAPI.git"
   },
   "author": "joseluisillana",
   "license": ""
