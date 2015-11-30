@@ -34,7 +34,7 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -45,5 +45,23 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+
+  /***************************************************************************
+  *                                                                          *
+  * Rutas para el manejo de TVShows                                          *
+  *                                                                          *
+  * Operaciones CRUD con la entidad                                          *
+  *                                                                          *
+  ***************************************************************************/
+
+
+  'get /mikeApi/findAllTVShows': 'TvshowController.findAllTVShows',
+  'get /mikeApi/findById/:id?': 'TvshowController.findById',
+  'post /mikeApi/addTVShow': 'TvshowController.addTVShow',
+  'put /mikeApi/updateTVShow/:id?': 'TvshowController.updateTVShow',
+  'post /mikeApi/deleteTVShow/:id?': 'TvshowController.deleteTVShow'
+
+
+
 
 };
