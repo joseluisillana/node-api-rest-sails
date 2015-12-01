@@ -24,7 +24,7 @@ db.once('open', function callback() {
  * Let's make our Mongodb Schemas/Models
  */
  module.exports = {
-
+     mongoose: mongoose,
      Tvshowmongoose: require('../models/Tvshowmongoose.js')(mongoose)
 
  }

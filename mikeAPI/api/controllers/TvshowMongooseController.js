@@ -1,12 +1,12 @@
 /**
 * Mongoose ORM load
 */
-var db = require('../services/mongooseService.js');
+var mongodbService = require('../services/mongooseService.js');
 
 module.exports = {
 
 crearMock: function (req, res) {
-  var tvshowmongoose = db.Tvshowmongoose({
+  var tvshowmongoose = mongodbService.Tvshowmongoose({
     title: 'LOST from mongoose',
     year: 2004,
     country: 'USA',
@@ -22,11 +22,16 @@ crearMock: function (req, res) {
   });
 },
 
-findAllTVShowsMongoose: function (req, res){
-  db.Tvshowmongoose.find(function(err,results){
-    if (err) return console.error(err);
+findAllTVShowsMongoose: function (req, res) {
+  console.log('M.I.K.E - GET ' + req.url);
 
-    return res.status(200).jsonp(results);
+  var TVShowMongoose = mongodbService.mongoose.model('Tvshowmongoose');
+  TVShowMongoose.find(function(err, result){
+    if(err){
+      res.send(500, err.message);
+    }else{
+      res.status(200).jsonp(result);
+    }
   });
 }
 

@@ -20,5 +20,5 @@ module.exports = function(mongoose) {
    summary: String
  });
 
- return mongoose.model('Tvshowmongoose', schema)
+ return mongoose.model('Tvshowmongoose', schema);
 }
