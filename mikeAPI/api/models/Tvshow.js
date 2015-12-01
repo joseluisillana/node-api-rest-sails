@@ -10,10 +10,10 @@ module.exports = {
   attributes: {
     titleA: 	{ type: 'string' },
 		title: 		{ type: 'string' },
-		year: 		{ type: 'string' },
+		year: 		{ type: 'integer' },
 		country: 	{ type: 'string' },
 		poster:  	{ type: 'string' },
-		seasons: 	{ type: 'string' },
+		seasons: 	{ type: 'integer' },
 		genre: 		{
 			type: 'string',
 			enum: ['Drama', 'Fantasy', 'Sci-Fi', 'Thriller', 'Comedy']
