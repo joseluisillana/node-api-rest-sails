@@ -59,7 +59,10 @@ module.exports.routes = {
   'get /mikeApi/findById/:id?': 'TvshowController.findById',
   'post /mikeApi/addTVShow': 'TvshowController.addTVShow',
   'put /mikeApi/updateTVShow/:id?': 'TvshowController.updateTVShow',
-  'post /mikeApi/deleteTVShow/:id?': 'TvshowController.deleteTVShow'
+  'post /mikeApi/deleteTVShow/:id?': 'TvshowController.deleteTVShow',
+  'post /mikeApi/addTVShowMongoose': 'TvshowMongooseController.crearMock',
+  'get /mikeApi/findAllTVShowsMongoose': 'TvshowMongooseController.findAllTVShowsMongoose'
+
 
 
 
