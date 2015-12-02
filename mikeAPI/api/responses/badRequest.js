@@ -43,8 +43,8 @@ module.exports = function badRequest(data, options) {
     if(data!=null && data!=undefined){
       return res.jsonx(data);
     }else{
-      console.log('M.I.K.E - [ERROR] response status code: ' + res.statusCode + ', URL: ' + req.url + 'PARAMS: ' + ((req.params!=null && req.params != undefined)?JSON.stringify(req.params):''));
-      return res.send('M.I.K.E - [ERROR] response status code: ' + res.statusCode + ', URL: ' + req.url + 'PARAMS: ' + ((req.params!=null && req.params != undefined)?JSON.stringify(req.params):''));
+      console.log('M.I.K.E - [ERROR] response status code: ' + res.statusCode + ', URL: ' + req.url + ' PARAMS: ' + ((req.params!=null && req.params != undefined)?JSON.stringify(req.params):''));
+      return res.send('M.I.K.E - [ERROR] response status code: ' + res.statusCode + ', URL: ' + req.url + ' PARAMS: ' + ((req.params!=null && req.params != undefined)?JSON.stringify(req.params):''));
     }
 
   }

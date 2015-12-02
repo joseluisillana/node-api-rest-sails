@@ -1,8 +1,8 @@
 /**
- * MyModel
+ * TvshowNative
  *
- * @module      :: Model
- * @description :: Just to try mongoose
+ * @module      :: Model for MongoDB native driver
+ * @description :: Just to try MongoDB native driver
  */
 
 module.exports = function(mongoose) {
@@ -20,5 +20,5 @@ module.exports = function(mongoose) {
    summary: String
  });
 
- return mongoose.model('Tvshowmongoose', schema);
+ return mongoose.model('Tvshownative', schema);
 }

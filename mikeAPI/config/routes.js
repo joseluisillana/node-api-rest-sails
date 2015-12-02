@@ -71,10 +71,14 @@ module.exports.routes = {
   'delete /mikeApi/tvshows/delete/:id?': 'TvshowMongooseController.delete',
   'post /mikeApi/tvshows/create': 'TvshowMongooseController.create',
   'get /mikeApi/tvshows/findAll': 'TvshowMongooseController.findAll',
-  'get /mikeApi/tvshows/findById/:id?': 'TvshowMongooseController.findById'
+  'get /mikeApi/tvshows/findById/:id?': 'TvshowMongooseController.findById',
 
-
-
-
-
+  /***************************************************************************
+  *                                                                          *
+  * Rutas para el manejo de TVShows con driver nativo de Mongo               *
+  *                                                                          *
+  * Operaciones CRUD con la entidad                                          *
+  *                                                                          *
+  ***************************************************************************/
+  'post /mikeApi/native/create': 'TvshowNativeController.create'
 };
