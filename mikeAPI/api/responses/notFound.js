@@ -42,7 +42,12 @@ module.exports = function notFound (data, options) {
 
   // If the user-agent wants JSON, always respond with JSON
   if (req.wantsJSON) {
-    return res.jsonx(data);
+    if(data!=null && data!=undefined){
+      return res.jsonx(data);
+    }else{
+      console.log('M.I.K.E - [ERROR] response status code: ' + res.statusCode + ', URL: ' + req.url + 'PARAMS: ' + ((req.params!=null && req.params != undefined)?JSON.stringify(req.params):''));
+      return res.send('M.I.K.E - [ERROR] response status code: ' + res.statusCode + ', URL: ' + req.url + 'PARAMS: ' + ((req.params!=null && req.params != undefined)?JSON.stringify(req.params):''));
+    }
   }
 
   // If second argument is a string, we take that to mean it refers to a view.
@@ -79,4 +84,3 @@ module.exports = function notFound (data, options) {
   });
 
 };
-

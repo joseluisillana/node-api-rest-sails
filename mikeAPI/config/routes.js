@@ -48,7 +48,7 @@ module.exports.routes = {
 
   /***************************************************************************
   *                                                                          *
-  * Rutas para el manejo de TVShows                                          *
+  * Rutas para el manejo de TVShows con Sails-Mongo                          *
   *                                                                          *
   * Operaciones CRUD con la entidad                                          *
   *                                                                          *
@@ -58,10 +58,20 @@ module.exports.routes = {
   'get /mikeApi/findAllTVShows': 'TvshowController.findAllTVShows',
   'get /mikeApi/findById/:id?': 'TvshowController.findById',
   'post /mikeApi/addTVShow': 'TvshowController.addTVShow',
-  'put /mikeApi/updateTVShow/:id?': 'TvshowController.updateTVShow',
-  'post /mikeApi/deleteTVShow/:id?': 'TvshowController.deleteTVShow',
-  'post /mikeApi/addTVShowMongoose': 'TvshowMongooseController.crearMock',
-  'get /mikeApi/findAllTVShowsMongoose': 'TvshowMongooseController.findAllTVShowsMongoose'
+
+  /***************************************************************************
+  *                                                                          *
+  * Rutas para el manejo de TVShows con Mongoose                             *
+  *                                                                          *
+  * Operaciones CRUD con la entidad                                          *
+  *                                                                          *
+  ***************************************************************************/
+
+  'put /mikeApi/tvshows/update/:id?': 'TvshowMongooseController.update',
+  'delete /mikeApi/tvshows/delete/:id?': 'TvshowMongooseController.delete',
+  'post /mikeApi/tvshows/create': 'TvshowMongooseController.create',
+  'get /mikeApi/tvshows/findAll': 'TvshowMongooseController.findAll',
+  'get /mikeApi/tvshows/findById/:id?': 'TvshowMongooseController.findById'
 
 
 
