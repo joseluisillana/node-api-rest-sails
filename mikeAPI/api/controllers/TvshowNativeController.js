@@ -8,7 +8,7 @@ module.exports = {
   // (Mirar si mola esto) Solo cargamos el cliente una vez y lo compartimos,
   // hacemos referencia así:
   //mongoNativeService.MongoClient
-  create: function(req,res){
+  findTeams: function(req,res){
     console.log('M.I.K.E - POST ' + req.url);
 
     mongoNativeService.teamlist('teams',"D", function(err, teamlist) {
@@ -46,5 +46,35 @@ module.exports = {
       }
     });
     //res.status(200).send("Psss a saber");
+  },
+
+  find : function(req, res){
+    console.log('M.I.K.E - GET ' + req.url );
+
+
+
+    console.log('PATH PARAMS' + req.param('collection') + '___ ' +req.param('id'));
+
+    mongoNativeService.find(req.param('collection'),req.param('id'),function(err, result) {
+      if (!err && (result != null && result != undefined)) {
+        var responseRest = {
+          status: 200,
+          statusMessage: "OK",
+          resultMessage: result
+        };
+        res.status(200).send(JSON.stringify(responseRest));
+      }else {
+        var responseRest = {
+          status: 500,
+          statusMessage: err,
+          resultMessage: []
+        };
+        //res.status(500).send("Oh dear, Database error Error details: " + JSON.stringify(err) + err);
+        res.status(500).send(JSON.stringify(responseRest));
+      }
+    });
+
+    // Salida por defecto
+    //return res.status(200).send("ok");
   }
 }

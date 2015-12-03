@@ -48,6 +48,7 @@ var onErr = function(err, callback) {
                 if (intCount > 0) {
                   var strJson = "[";
                   for (var i = 0; i < intCount;) {
+                    console.log(docs[i]);
                     var intTeamsCount = docs[i].teams.length;
                     console.log('M.I.K.E - [[Collection '+collectionName+' , registry '+i+']] total teams : ' + intTeamsCount);
                     strJson += '{"GroupName":"' + gname + '","count":' + intTeamsCount + ',"teams":[';
@@ -65,7 +66,7 @@ var onErr = function(err, callback) {
                     }
                   }
                   strJson += "]";
-                  
+
                   console.log('M.I.K.E - [[strJson]] : ' + strJson);
                   callback("", JSON.parse(strJson));
                 }
@@ -84,5 +85,54 @@ var onErr = function(err, callback) {
         onErr(err, callback);
       }
     });
+  },
+
+  find : function(collectionName, id, callback) {
+   db.open(function(err, db) {
+     if (!err) {
+
+       db.collection(collectionName, function(err, collection) {
+         console.log('M.I.K.E - [[QUERYING FOR '+collectionName+']]');
+         if (!err) {
+           console.log('M.I.K.E - [[QUERYING FOR '+collectionName+']] with field id = '+ id);
+           collection.find({
+             '_id': new mongo.ObjectID(id)
+           }).toArray(function(err, docs) {
+             if (!err) {
+               // Cerramos la conexión, ya no la necesitamos
+               db.close();
+               var intCount = docs.length;
+               console.log('M.I.K.E - [[Collection '+collectionName+']] total results received : ' + intCount);
+               if (intCount>0){
+                 console.log('M.I.K.E - [[Data from MongoDB]] : ' + docs);
+
+                 // TODO Intento de devolver los resultados a pelo
+                 callback("", docs);
+               }else{
+                 // TODO Intento de devolver los resultados a pelo
+                 console.log('M.I.K.E - [[Data from MongoDB]] : EMPTY');
+                 callback("", []);
+               }
+             } else {
+               console.log('M.I.K.E - [[ERROR]] : '+err);
+               onErr(err, callback);
+             }
+           }); //end collection.find
+         } else {
+           console.log('M.I.K.E - [[ERROR]] : '+err);
+           onErr(err, callback);
+         }
+       }); //end db.collection
+     } else {
+       console.log('M.I.K.E - [[ERROR]] : '+err);
+       onErr(err, callback);
+     }
+   });
   }
+
+
+
+
+
+
  }

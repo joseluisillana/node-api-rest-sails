@@ -80,5 +80,6 @@ module.exports.routes = {
   * Operaciones CRUD con la entidad                                          *
   *                                                                          *
   ***************************************************************************/
-  'post /mikeApi/native/create': 'TvshowNativeController.create'
+  'post /mikeApi/native/findTeams': 'TvshowNativeController.findTeams',
+  'get /mikeApi/native/find/:collection/:id?': 'TvshowNativeController.find'
 };
