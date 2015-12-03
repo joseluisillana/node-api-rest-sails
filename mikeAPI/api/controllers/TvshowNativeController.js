@@ -10,19 +10,19 @@ module.exports = {
   //mongoNativeService.MongoClient
   create: function(req,res){
     console.log('M.I.K.E - POST ' + req.url);
-    var teamlist = test_data.teamlist;
-    console.log('M.I.K.E - team list ' + JSON.stringify(teamlist));
-    mongoNativeService.teamlist("D", function(err, teamlist) {
+
+    mongoNativeService.teamlist('teams',"D", function(err, teamlist) {
       console.log('M.I.K.E - FLAG mongoNativeService.teamlist...');
       if (!err) {
         console.log('M.I.K.E - FLAG EL IF ERR...');
         var strTeam = "",
           i = 0;
-          console.log('M.I.K.E - teamlist.count...'+ teamlist.count);
+          console.log('M.I.K.E - teamlist'+ JSON.stringify(teamlist));
+          console.log('M.I.K.E - teamlist.count...'+ teamlist.length);
           console.log('M.I.K.E - teamlist.teams...'+ teamlist.teams);
           console.log('M.I.K.E - teamlist.teams.length...'+ teamlist.teams.length);
         for (i = 0; i < teamlist.count;) {
-          for (z = 0; z < teamlist[i].teams.count;) {
+          for (z = 0; z < teamlist[i].teams;) {
             strTeam = strTeam + "<li>" + teamlist[i].teams[z].country + "</li>";
             console.log('M.I.K.E - teamlist.teams[i].country...' + teamlist[i].teams[z].country);
             z = z + 1;

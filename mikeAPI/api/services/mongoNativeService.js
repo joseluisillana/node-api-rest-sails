@@ -31,10 +31,10 @@ var onErr = function(err, callback) {
  * Let's make our Mongodb Schemas/Models
  */
  module.exports = {
-   teamlist : function(gname, callback) {
+   teamlist : function(collectionName, gname, callback) {
     db.open(function(err, db) {
       if (!err) {
-        db.collection('teams', function(err, collection) {
+        db.collection(collectionName, function(err, collection) {
           console.log('M.I.K.E - VAMOSSSSS... 1 ' + collection);
           if (!err) {
             console.log('M.I.K.E - VAMOSSSSS... 2 ' + collection);
@@ -42,13 +42,15 @@ var onErr = function(err, callback) {
               'GroupName': gname
             }).toArray(function(err, docs) {
               if (!err) {
-                console.log('M.I.K.E - [[llego?]] : ');
                 db.close();
                 var intCount = docs.length;
+                console.log('M.I.K.E - [[Collection '+collectionName+']] total results : ' + intCount);
                 if (intCount > 0) {
-                  var strJson = "";
+                  var strJson = "[";
                   for (var i = 0; i < intCount;) {
                     var intTeamsCount = docs[i].teams.length;
+                    console.log('M.I.K.E - [[Collection '+collectionName+' , registry '+i+']] total teams : ' + intTeamsCount);
+                    strJson += '{"GroupName":"' + gname + '","count":' + intTeamsCount + ',"teams":[';
                     for (var z = 0; z < intTeamsCount;) {
                       strJson += '{"country":"' + docs[i].teams[z].country + '"}'
                       z = z + 1;
@@ -56,12 +58,14 @@ var onErr = function(err, callback) {
                         strJson += ',';
                       }
                     }
+                    strJson += "]}";
                     i = i + 1;
                     if (i < intCount) {
                       strJson += ',';
                     }
                   }
-                  strJson = '{"GroupName":"' + gname + '","count":' + intCount + ',"teams":[' + strJson + "]}"
+                  strJson += "]";
+                  
                   console.log('M.I.K.E - [[strJson]] : ' + strJson);
                   callback("", JSON.parse(strJson));
                 }
