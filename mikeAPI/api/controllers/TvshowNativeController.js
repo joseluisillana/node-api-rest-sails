@@ -18,11 +18,9 @@ module.exports = {
         var strTeam = "",
           i = 0;
           console.log('M.I.K.E - teamlist'+ JSON.stringify(teamlist));
-          console.log('M.I.K.E - teamlist.count...'+ teamlist.length);
-          console.log('M.I.K.E - teamlist.teams...'+ teamlist.teams);
-          console.log('M.I.K.E - teamlist.teams.length...'+ teamlist.teams.length);
-        for (i = 0; i < teamlist.count;) {
-          for (z = 0; z < teamlist[i].teams;) {
+
+        for (i = 0; i < teamlist.length;) {
+          for (z = 0; z < teamlist[i].count;) {
             strTeam = strTeam + "<li>" + teamlist[i].teams[z].country + "</li>";
             console.log('M.I.K.E - teamlist.teams[i].country...' + teamlist[i].teams[z].country);
             z = z + 1;
