@@ -21,7 +21,7 @@ var server = new Server(host, port, {
 var db = new Db(database, server);
 
 var onErr = function(err, callback) {
-  console.log('M.I.K.E - [[ERROR]] : '+JSON.stringify(err));
+  console.log('M.I.K.E - [[ ERROR ]] : '+JSON.stringify(err));
   db.close();
   callback(err);
 };
@@ -35,22 +35,20 @@ var onErr = function(err, callback) {
     db.open(function(err, db) {
       if (!err) {
         db.collection(collectionName, function(err, collection) {
-          console.log('M.I.K.E - VAMOSSSSS... 1 ' + collection);
           if (!err) {
-            console.log('M.I.K.E - VAMOSSSSS... 2 ' + collection);
             collection.find({
               'GroupName': gname
             }).toArray(function(err, docs) {
               if (!err) {
                 db.close();
                 var intCount = docs.length;
-                console.log('M.I.K.E - [[Collection '+collectionName+']] total results : ' + intCount);
+                console.log('M.I.K.E - [[ Collection '+collectionName+' ]] total results : ' + intCount);
                 if (intCount > 0) {
                   var strJson = "[";
                   for (var i = 0; i < intCount;) {
                     console.log(docs[i]);
                     var intTeamsCount = docs[i].teams.length;
-                    console.log('M.I.K.E - [[Collection '+collectionName+' , registry '+i+']] total teams : ' + intTeamsCount);
+                    console.log('M.I.K.E - [[ Collection '+collectionName+' , registry '+i+' ]] total teams : ' + intTeamsCount);
                     strJson += '{"GroupName":"' + gname + '","count":' + intTeamsCount + ',"teams":[';
                     for (var z = 0; z < intTeamsCount;) {
                       strJson += '{"country":"' + docs[i].teams[z].country + '"}'
@@ -67,21 +65,21 @@ var onErr = function(err, callback) {
                   }
                   strJson += "]";
 
-                  console.log('M.I.K.E - [[strJson]] : ' + strJson);
+                  console.log('M.I.K.E - [[ RESULT ]] : ' + strJson);
                   callback("", JSON.parse(strJson));
                 }
               } else {
-                console.log('M.I.K.E - [[ERROR]] : '+err);
+                console.log('M.I.K.E - [[ ERROR ]] : '+err);
                 onErr(err, callback);
               }
             }); //end collection.find
           } else {
-            console.log('M.I.K.E - [[ERROR]] : '+err);
+            console.log('M.I.K.E - [[ ERROR ]] : '+err);
             onErr(err, callback);
           }
         }); //end db.collection
       } else {
-        console.log('M.I.K.E - [[ERROR]] : '+err);
+        console.log('M.I.K.E - [[ ERROR ]] : '+err);
         onErr(err, callback);
       }
     });
@@ -104,35 +102,29 @@ var onErr = function(err, callback) {
                var intCount = docs.length;
                console.log('M.I.K.E - [[Collection '+collectionName+']] total results received : ' + intCount);
                if (intCount>0){
-                 console.log('M.I.K.E - [[Data from MongoDB]] : ' + docs);
+                 console.log('M.I.K.E - [[ Data from MongoDB ]] : ' + docs);
 
                  // TODO Intento de devolver los resultados a pelo
                  callback("", docs);
                }else{
                  // TODO Intento de devolver los resultados a pelo
-                 console.log('M.I.K.E - [[Data from MongoDB]] : EMPTY');
+                 console.log('M.I.K.E - [[ Data from MongoDB ]] : EMPTY');
                  callback("", []);
                }
              } else {
-               console.log('M.I.K.E - [[ERROR]] : '+err);
+               console.log('M.I.K.E - [[ ERROR ]] : '+err);
                onErr(err, callback);
              }
            }); //end collection.find
          } else {
-           console.log('M.I.K.E - [[ERROR]] : '+err);
+           console.log('M.I.K.E - [[ ERROR ]] : '+err);
            onErr(err, callback);
          }
        }); //end db.collection
      } else {
-       console.log('M.I.K.E - [[ERROR]] : '+err);
+       console.log('M.I.K.E - [[ ERROR ]] : '+err);
        onErr(err, callback);
      }
    });
   }
-
-
-
-
-
-
- }
+}
