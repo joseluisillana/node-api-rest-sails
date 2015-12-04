@@ -81,5 +81,14 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   'post /mikeApi/native/findTeams': 'TvshowNativeController.findTeams',
-  'get /mikeApi/native/find/:collection/:id?': 'TvshowNativeController.find'
+  'get /mikeApi/native/find/:collection/:id?': 'TvshowNativeController.find',
+
+  /***************************************************************************
+  *                                                                          *
+  * Rutas para el manejo de colecciones de elastic con driver nativo         *
+  *                                                                          *
+  * Operaciones CRUD con la entidad  y operaciones dummies                   *
+  *                                                                          *
+  ***************************************************************************/
+  'get /mikeApi/test': 'ElasticSearchController.doPing'
 };
