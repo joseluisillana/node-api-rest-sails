@@ -1,7 +1,8 @@
 /**
 * Mongo Native service
 */
-var mongoNativeService = require('../services/mongoNativeService.js');
+var mongoNativeService = require('../services/mongoNativeService');
+var responseSchema = require('../models/responseSchema');
 var test_data = require('../exampleData/test-data');
 
 module.exports = {
@@ -57,20 +58,9 @@ module.exports = {
 
     mongoNativeService.find(req.param('collection'),req.param('id'),function(err, result) {
       if (!err && (result != null && result != undefined)) {
-        var responseRest = {
-          status: 200,
-          statusMessage: "OK",
-          resultMessage: result
-        };
-        res.status(200).send(JSON.stringify(responseRest));
+        res.status(200).send(JSON.stringify(responseSchema.createResponse(200,"OK",result)));
       }else {
-        var responseRest = {
-          status: 500,
-          statusMessage: err,
-          resultMessage: []
-        };
-        //res.status(500).send("Oh dear, Database error Error details: " + JSON.stringify(err) + err);
-        res.status(500).send(JSON.stringify(responseRest));
+        res.status(500).send(JSON.stringify(responseSchema.createResponse(500,err,[])));
       }
     });
 
