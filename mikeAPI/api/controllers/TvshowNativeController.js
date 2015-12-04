@@ -3,7 +3,6 @@
 */
 var mongoNativeService = require('../services/mongoNativeService');
 var responseSchema = require('../models/responseSchema');
-var test_data = require('../exampleData/test-data');
 
 module.exports = {
   // (Mirar si mola esto) Solo cargamos el cliente una vez y lo compartimos,
