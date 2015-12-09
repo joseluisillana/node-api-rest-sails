@@ -51,7 +51,53 @@ module.exports = {
       }
     });
   },
-  doComplexSearch: function(indexParam,typeParam,bodyParam,client){
+  doComplexSearch: function(indexParam,typeParam,bodyParam,client, callback){
+    var searchIndexParams = {
+      index: '' + indexParam
+    };
+    var searchTypeParams = {
+      type: '' + typeParam
+    };
+    var searchBodyParams = {
+      body: '' + bodyParam
+    };
+
+
+    var searchParams = {
+      index: '' + searchIndexParams.index,
+      type: '' + searchTypeParams.type,
+      body: '' + searchBodyParams.body
+    };
+
+    // Check if indices exists
+    client.indices.exists(searchIndexParams, function(error, exists) {
+      console.log('Existe el indice?: ' + exists);
+      if (exists === true) {
+        // Check if type exists
+        client.search(searchParams).then(function(responseData) {
+          console.log('Tenemos respuesta?: ' + JSON.stringify(responseData));
+          if (responseData != null && responseData != undefined) {
+            // Action zone ¡¡
+            callback('', responseData);
+          }else if (error != null && error != undefined){
+            console.log(error);
+            callback("", JSON.stringify(error));
+          }else{
+            console.log("ERROR No existe el type");
+            callback("ERROR No existe el type", "ERROR No existe el type");
+          }
+        }, function (error){
+          console.log("ERROR No existe el indice");
+          callback("ERROR No existe el indice", "ERROR No existe el indice");
+        });
+    }else{
+      console.log("ERROR No existe el indice");
+      callback("ERROR No existe el indice", "ERROR No existe el indice");
+    }
+  });
+
+    /*
+
    client.search({
      index: indexParam,
      type: typeParam,
@@ -68,6 +114,6 @@ module.exports = {
    }, function (err) {
      console.trace(err.message);
      callback("", JSON.parse(error));
-   });
-  }
+   });*/
+ }
 }

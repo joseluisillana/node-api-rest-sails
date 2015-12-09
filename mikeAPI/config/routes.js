@@ -91,5 +91,6 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   'get /mikeApi/test': 'ElasticSearchController.doPing',
-  'get /mikeApi/test/search/:indexParam': 'ElasticSearchController.doSearch'
+  'get /mikeApi/test/search/:indexParam': 'ElasticSearchController.doSearch',
+  'post /mikeApi/test/search/:indexParam/:typeParam': 'ElasticSearchController.doComplexSearch'
 };
