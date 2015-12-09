@@ -90,5 +90,6 @@ module.exports.routes = {
   * Operaciones CRUD con la entidad  y operaciones dummies                   *
   *                                                                          *
   ***************************************************************************/
-  'get /mikeApi/test': 'ElasticSearchController.doPing'
+  'get /mikeApi/test': 'ElasticSearchController.doPing',
+  'get /mikeApi/test/search/:indexParam': 'ElasticSearchController.doSearch'
 };
