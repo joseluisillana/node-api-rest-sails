@@ -14,15 +14,20 @@ module.exports = {
     if ((topicParam != null && topicParam != undefined)&&(bodyParam != null && bodyParam != undefined)){
       console.log('M.I.K.E - [[ PUTTING ON TOPIC: '+topicParam+']] ');
       kafkapipeService.putMessageOnTopic(topicParam, bodyParam, kafkapipeService.kafkapipeclient, kafkapipeService.kafkapipeproducer, function(err,result){
+        console.log('M.I.K.E - AQUI 1');
         if (!err && (result != null && result != undefined)) {
+          console.log('M.I.K.E - AQUI 2');
           console.log('M.I.K.E - [[ PUTTING ON TOPIC: '+topicParam+']] The value: '+bodyParam+']] result: ' + JSON.stringify(result));
           res.status(200).send(JSON.stringify(responseSchema.createResponse(200,"OK",result)));
         }else {
+          console.log('M.I.K.E - AQUI 3');
           console.log('M.I.K.E - [[ ERROR PUTTING ON TOPIC: '+topicParam+']] The value: '+bodyParam+']] ');
           res.status(500).send(JSON.stringify(responseSchema.createResponse(500,err,[])));
         }
+        console.log('M.I.K.E - AQUI 4');
       });
     }else{
+      console.log('M.I.K.E - AQUI 5');
       console.log('M.I.K.E - [[PUTTING ON TOPIC: '+topicParam+']] The value: '+bodyParam+']] ');
       res.status(404).send(JSON.stringify(responseSchema.createResponse(404,'Invalid params, params not found',[])));
     }
