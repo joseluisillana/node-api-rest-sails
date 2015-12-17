@@ -92,5 +92,14 @@ module.exports.routes = {
   ***************************************************************************/
   'get /mikeApi/test': 'ElasticSearchController.doPing',
   'get /mikeApi/test/search/:indexParam': 'ElasticSearchController.doSearch',
-  'post /mikeApi/test/search/:indexParam/:typeParam': 'ElasticSearchController.doComplexSearch'
+  'post /mikeApi/test/search/:indexParam/:typeParam': 'ElasticSearchController.doComplexSearch',
+
+  /***************************************************************************
+  *                                                                          *
+  * Rutas para el manejo de colecciones de elastic con driver nativo         *
+  *                                                                          *
+  * Operaciones CRUD con la entidad  y operaciones dummies                   *
+  *                                                                          *
+  ***************************************************************************/
+  'post /mikeApi/test/sendDataToKAfka/:topic': 'KafkaPipeController.putMessageOnTopic'
 };
