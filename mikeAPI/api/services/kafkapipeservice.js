@@ -46,7 +46,7 @@ module.exports = {
         console.log("ERROR (PRODUCER ready) No se que le pasa"+err);
         callback("ERROR (PRODUCER ready) No se que le pasa", "ERROR (PRODUCER ready) No se que le pasa");
       }else{
-        console.log("(PRODUCER ready) Desde el servicio debería escupir algo: " + data);
+        console.log("(PRODUCER ready) Desde el servicio debería escupir algo: " + JSON.stringify(data));
         callback("", data);
       }
     });
