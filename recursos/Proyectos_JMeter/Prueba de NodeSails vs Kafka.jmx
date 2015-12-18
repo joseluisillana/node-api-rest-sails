@@ -55,7 +55,7 @@
             </elementProp>
             <elementProp name="PARAMETER_API_PORT_MIKE" elementType="Argument">
               <stringProp name="Argument.name">PARAMETER_API_PORT_MIKE</stringProp>
-              <stringProp name="Argument.value">4567</stringProp>
+              <stringProp name="Argument.value">1337</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
@@ -76,12 +76,12 @@
             </collectionProp>
           </elementProp>
           <stringProp name="HTTPSampler.domain">localhost</stringProp>
-          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.port">1337</stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">proxy_sparkjava_kafka/sendTestData/TestProxy</stringProp>
+          <stringProp name="HTTPSampler.path">mikeApi/test/sendDataToKAfka/TestProxy</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -148,7 +148,7 @@
               <threadCounts>true</threadCounts>
             </value>
           </objProp>
-          <stringProp name="filename">/home/joseluisillana/Escritorio/Cajon Desastre/Ejecuciones JMETER/pruebas</stringProp>
+          <stringProp name="filename">/home/joseluisillana/Escritorio/Cajon Desastre/Ejecuciones JMETER/Prueba con node.csv</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="Gráfico de Resultados" enabled="true">
